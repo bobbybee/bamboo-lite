@@ -14,6 +14,8 @@ class DCFile:
 
 		for ln in self.lines:
 			print ln
+			if regexs["dclassDefinition"].search(ln):
+				print "DCLASS DEF"
 
 """
 getDCFileFromPath should not be used in production
