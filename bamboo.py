@@ -8,3 +8,14 @@ class DCFile:
 
 		for ln in self.lines:
 			print ln
+
+"""
+getDCFileFromPath should not be used in production
+this code stub is for testing bamboo lite in debug
+"""
+
+def getDCFileFromPath(path):
+	file = open(path, 'r')
+	return DCFile(file.read())
+
+print getDCFileFromPath("sample.dc")
