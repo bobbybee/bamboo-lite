@@ -4,6 +4,7 @@ kTypeStruct = "kTypeStruct"
 class Module:
 	def __init__(self):
 		self.classes = []
+		self.imports = []
 
 	def add_keyword(self, word):
 		pass
@@ -13,3 +14,9 @@ class Module:
 
 	def get_class(self, num):
 		return self.classes[num]
+
+	def num_imports(self):
+		return len(self.imports)
+
+	def get_import(self, n):
+		return self.imports[n]

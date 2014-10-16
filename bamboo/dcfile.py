@@ -3,10 +3,12 @@ from DistributedClass import DistributedClass
 from DistributedField import DistributedField
 from DistributedParameter import DistributedParameter
 from DistributedType import DistributedType
+from DistributedImport import DistributedImport
 
 regexs = {
 	"dclassDefinition": re.compile('dclass ([^ ]+) (: ([^ ]+) )?{'),
-	"method": re.compile("\s+([^\(]+)\(([^\)]*)\)([^;]*);")
+	"method": re.compile("\s+([^\(]+)\(([^\)]*)\)([^;]*);"),
+	"import": re.compile("from ([^ ]+) import (.+)")
 }
 
 def parse_dcfile(mod, src):
@@ -31,6 +33,14 @@ def parse_dcfile(mod, src):
 				isClass = True
 
 				current = DistributedClass(groupName)
+
+			else regexs["import"].search(ln):
+				mat = regexs["import"].match(ln)
+				path = mat.group(1)
+				module = mat.group(2)
+
+				imp = DistributedImport(path, module)
+				mat.imports.append(imp)
 
 		else:
 			if ln == "}":
