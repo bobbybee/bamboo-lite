@@ -1,4 +1,4 @@
-class DistributedParamater:
+class DistributedParameter:
 	def __init__(self, _type, name):
 		self._type = _type
 		self._name = name

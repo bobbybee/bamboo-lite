@@ -1,6 +1,7 @@
 import re
 from DistributedClass import DistributedClass
 from DistributedField import DistributedField
+from DistributedParameter import DistributedParameter
 
 regexs = {
 	"dclassDefinition": re.compile('dclass ([^ ]+) (: ([^ ]+) )?{'),
@@ -45,9 +46,28 @@ def parse_dcfile(mod, src):
 				parameterDump = mat.group(2)
 				modifiersDump = mat.group(3)
 
+				# extract parameters
+				parameterList = []
+
+				if len(parameterDump):
+					parameters = parameterDump.split(',')
+
+					for param in parameters:
+						parts = param.strip().split(' ')
+
+						name = None
+
+						if len(parts) > 1 and not parts[-1].isdigit():
+							name = parts[-1]
+							parts = parts[:-1]
+
+						t = " ".join(parts)
+
+						parameterList.append(DistributedParameter(t, name))
+
 				# extract modifiers
 				modifierList = modifiersDump.split(' ')
 				del modifierList[0] # fixes some bugs
 
-				newField = DistributedField(methodName, parameterDump, modifierList)
+				newField = DistributedField(methodName, parameterList, modifierList)
 				current.fields.append(newField)
