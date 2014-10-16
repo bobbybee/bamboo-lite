@@ -10,6 +10,31 @@ for word in astron_keywords:
     mod.add_keyword(word)
 dcfile.parse_dcfile(mod, 'sample.dc')
 
+print() # Newline after prompt
+
+# Inspect python imports
+print('Imports')
+for import_num in range(0, mod.num_imports()):
+    # python module path
+    pyimport = mod.get_import(import_num)
+    #print('  ' + pyimport.module)
+    #for symbol in pyimport.symbols:
+    #    # Figure out the names of used classes
+    #    fragments = str(symbol).split('/')
+    #    base_class = fragments[0]
+    #    suffixes = fragments[1:] + ['']
+    #    for suffix in suffixes:
+    #        print('    ' + base_class + suffix)
+
+print() # Newline after imports
+
+# Inspect module keywords
+print('Keywords')
+#for keyword_num in range(0, mod.num_keywords()):
+ #   print('  ' + mod.get_keyword(keyword_num))
+
+print() # Newline after keywords
+
 # Helper functions for printing complex types
 def print_type(typ, indent):
     tab = '  ' * indent
@@ -43,3 +68,11 @@ for class_num in range(0, mod.num_classes()):
         field = cls.get_field(field_num)
         print('    ' + field.name() + ' : ' + field.type().to_string())
         print_type(field.type(), 3)
+
+print() # Newline after classes
+
+print('Fields-By-Id')
+for i in range(0, 3):
+    print('  %s - %s' % (i, mod.field_by_id(i).name()))
+
+print() # Newline before prompt

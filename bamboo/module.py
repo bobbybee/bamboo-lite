@@ -5,6 +5,7 @@ class Module:
 	def __init__(self):
 		self.classes = []
 		self.imports = []
+		self.fields = []
 
 	def add_keyword(self, word):
 		pass
@@ -20,3 +21,6 @@ class Module:
 
 	def get_import(self, n):
 		return self.imports[n]
+
+	def field_by_id(self, n):
+		return self.fields[n]

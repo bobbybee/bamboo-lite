@@ -34,7 +34,7 @@ def parse_dcfile(mod, src):
 
 				current = DistributedClass(groupName)
 
-			else regexs["import"].search(ln):
+			elif regexs["import"].search(ln):
 				mat = regexs["import"].match(ln)
 				path = mat.group(1)
 				module = mat.group(2)
@@ -81,3 +81,4 @@ def parse_dcfile(mod, src):
 
 				newField = DistributedField(methodName, parameterList, modifierList)
 				current.fields.append(newField)
+				mod.fields.append(newField)
