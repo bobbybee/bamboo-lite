@@ -1,7 +1,8 @@
 import re
 
 regexs = {
-	"dclassDefinition": re.compile('dclass ([^ ]+) (: ([^ ]+) )?{')
+	"dclassDefinition": re.compile('dclass ([^ ]+) (: ([^ ]+) )?{'),
+	"method": re.compile("\s+([^\(]+)\(([^\)]+)\)([^;]*);")
 }
 
 class DCFile:
@@ -29,6 +30,15 @@ class DCFile:
 			else:
 				if ln == "}":
 					isInGroup = False
+				elif regexs["method"].search(ln):
+					mat = regexs["method"].match(ln)
+					methodName = mat.group(1)
+					parameterDump = mat.group(2)
+					modifiersDump = mat.group(3)
+
+					print "Method Name: "+methodName
+					print "parameterDump: "+parameterDump
+					print "modifiersDump: "+modifiersDump
 
 """
 getDCFileFromPath should not be used in production
