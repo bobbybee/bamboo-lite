@@ -18,13 +18,17 @@ class DCFile:
 		for ln in self.lines:
 			print ln
 			
-			if !isInGroup:
+			if not isInGroup:
 				if regexs["dclassDefinition"].search(ln):
 					mat = regexs["dclassDefinition"].match(ln)
 					groupName = mat.group(1)
 
 					# TODO: inheritance
 					isInGroup = True
+
+			else:
+				if ln == "}":
+					isInGroup = False
 
 """
 getDCFileFromPath should not be used in production
