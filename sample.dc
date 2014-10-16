@@ -1,0 +1,7 @@
+dclass DistributedTestObject {
+	test1(string name);
+}
+
+dclass DistributedTestObject2 : DistributedTestObject {
+	test2(string, uint32 b);
+}
