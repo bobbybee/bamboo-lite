@@ -1,3 +1,9 @@
+import re
+
+regexs = {
+	"dclassDefinition": re.compile('dclass ([^ ]+) (: ([^ ]+) )?{')
+}
+
 class DCFile:
 	def __init__(self, src):
 		self.source = src
@@ -19,3 +25,4 @@ def getDCFileFromPath(path):
 	return DCFile(file.read())
 
 print getDCFileFromPath("sample.dc")
+print regexs["dclassDefinition"]
