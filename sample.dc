@@ -3,5 +3,6 @@ dclass DistributedTestObject {
 }
 
 dclass DistributedTestObject2 : DistributedTestObject {
-	test2(string, uint32 b);
+	test2(string, uint32 b) ownsend broadcast;
+	test3() clsend;
 }

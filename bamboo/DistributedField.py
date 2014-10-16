@@ -4,5 +4,8 @@ class DistributedField:
 		self.paramList = paramList
 		self.modifierList = modifierList
 
+		print self.paramList
+		print self.modifierList
+
 	def name(self):
 		return self._name
