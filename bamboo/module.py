@@ -6,7 +6,7 @@ class Module:
 		print "Adding keyword "+word+"..."
 
 	def num_classes(self):
-		return self.classes.length
+		return len(self.classes)
 
 	def get_class(self, num):
 		return self.classes[num]

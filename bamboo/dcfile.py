@@ -1,5 +1,5 @@
 import re
-import DistributedClass
+from DistributedClass import DistributedClass
 
 regexs = {
 	"dclassDefinition": re.compile('dclass ([^ ]+) (: ([^ ]+) )?{'),
@@ -34,8 +34,8 @@ def parse_dcfile(mod, src):
 					isClass = False
 
 					t_cls = DistributedClass(groupName)
-					mod.classes = mod.classes.concat(t_cls)
-					
+					mod.classes.append(t_cls)
+
 			elif regexs["method"].search(ln):
 				mat = regexs["method"].match(ln)
 				methodName = mat.group(1)
