@@ -12,14 +12,19 @@ class DCFile:
 	def parse(self):
 		self.lines = self.source.split('\n')
 
+		isInGroup = False
+		groupName = ""
+
 		for ln in self.lines:
 			print ln
-			if regexs["dclassDefinition"].search(ln):
-				mat = regexs["dclassDefinition"].match(ln)
-				dclassName = mat.group(1)
-				print dclassName
-				
-				# TODO: inheritance
+			
+			if !isInGroup:
+				if regexs["dclassDefinition"].search(ln):
+					mat = regexs["dclassDefinition"].match(ln)
+					groupName = mat.group(1)
+
+					# TODO: inheritance
+					isInGroup = True
 
 """
 getDCFileFromPath should not be used in production
