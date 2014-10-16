@@ -20,5 +20,5 @@ for class_num in range(0, mod.num_classes()):
     for field_num in range(0, cls.num_fields()):
         field = cls.get_field(field_num)
         print(field.name())
-    #    print('    ' + field.name() + ' : ' + field.type().to_string())
+        print('    ' + field.name() + ' : ' + field.type().to_string())
     #    print_type(field.type(), 3)

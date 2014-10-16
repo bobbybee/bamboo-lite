@@ -19,8 +19,7 @@ def parse_dcfile(mod, src):
 	current = None
 
 	for ln in lines:
-		print ln
-		
+			
 		if not isInGroup:
 			if regexs["dclassDefinition"].search(ln):
 				mat = regexs["dclassDefinition"].match(ln)

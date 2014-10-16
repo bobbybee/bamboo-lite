@@ -1,9 +1,12 @@
+kTypeMethod = "kTypeMethod"
+kTypeStruct = "kTypeStruct"
+
 class Module:
 	def __init__(self):
 		self.classes = []
 
 	def add_keyword(self, word):
-		print "Adding keyword "+word+"..."
+		pass
 
 	def num_classes(self):
 		return len(self.classes)
