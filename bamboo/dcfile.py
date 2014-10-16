@@ -2,6 +2,7 @@ import re
 from DistributedClass import DistributedClass
 from DistributedField import DistributedField
 from DistributedParameter import DistributedParameter
+from DistributedType import DistributedType
 
 regexs = {
 	"dclassDefinition": re.compile('dclass ([^ ]+) (: ([^ ]+) )?{'),
@@ -19,7 +20,7 @@ def parse_dcfile(mod, src):
 	current = None
 
 	for ln in lines:
-			
+
 		if not isInGroup:
 			if regexs["dclassDefinition"].search(ln):
 				mat = regexs["dclassDefinition"].match(ln)
@@ -62,7 +63,7 @@ def parse_dcfile(mod, src):
 
 						t = " ".join(parts)
 
-						parameterList.append(DistributedParameter(t, name))
+						parameterList.append(DistributedParameter(DistributedType(t), name))
 
 				# extract modifiers
 				modifierList = modifiersDump.split(' ')
