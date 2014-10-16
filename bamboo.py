@@ -15,7 +15,11 @@ class DCFile:
 		for ln in self.lines:
 			print ln
 			if regexs["dclassDefinition"].search(ln):
-				print "DCLASS DEF"
+				mat = regexs["dclassDefinition"].match(ln)
+				dclassName = mat.group(1)
+				print dclassName
+				
+				# TODO: inheritance
 
 """
 getDCFileFromPath should not be used in production
