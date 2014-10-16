@@ -1,5 +1,6 @@
 import re
 from DistributedClass import DistributedClass
+from DistributedField import DistributedField
 
 regexs = {
 	"dclassDefinition": re.compile('dclass ([^ ]+) (: ([^ ]+) )?{'),
@@ -44,6 +45,5 @@ def parse_dcfile(mod, src):
 				parameterDump = mat.group(2)
 				modifiersDump = mat.group(3)
 
-				print "Method Name: "+methodName
-				print "parameterDump: "+parameterDump
-				print "modifiersDump: "+modifiersDump
+				newField = DistributedField(methodName, parameterDump, modifiersDump)
+				current.fields.append(newField)
