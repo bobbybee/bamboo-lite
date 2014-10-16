@@ -14,6 +14,8 @@ def parse_dcfile(mod, src):
 	groupName = ""
 	isClass = False
 
+	current = None
+
 	for ln in lines:
 		print ln
 		
@@ -26,15 +28,15 @@ def parse_dcfile(mod, src):
 				isInGroup = True
 				isClass = True
 
+				current = DistributedClass(groupName)
+
 		else:
 			if ln == "}":
 				isInGroup = False
 
 				if isClass:
 					isClass = False
-
-					t_cls = DistributedClass(groupName)
-					mod.classes.append(t_cls)
+					mod.classes.append(current)
 
 			elif regexs["method"].search(ln):
 				mat = regexs["method"].match(ln)
